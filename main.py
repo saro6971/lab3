@@ -8,17 +8,17 @@ app = Flask(__name__)
 
 @app.route("/")
 def allTheTweets():
-    for x in range(0,20):
-        s = subtask("findStrings.pronounCount","tweets_{}.txt".format(x))    
-        print s
-        #result = pronounCount("tweets_19.txt.part")
-   # grouped = group(s)
-   # result = grouped()
-   # while(result.ready() == False):
-   #     time.sleep(2)
-   # print result
+    #for x in range(0,20):
+    
+    s = subtask("findStrings.pronounCount","tweets_19.txt")    
 
-allTheTweets()    
+    grouped = group(s)
+    result = grouped()
+    while(result.ready() == False):
+        time.sleep(2)
+    print result
+
+    
 #if __name__ == "__main__":
 #    app.run()
     

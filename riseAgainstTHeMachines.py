@@ -1,7 +1,7 @@
 import os
 import swiftclient.client
 import time
-import paramiko
+
 
 config = {'username':os.environ['OS_USERNAME'], 
           'api_key':os.environ['OS_PASSWORD'],
@@ -16,15 +16,14 @@ nc = Client('2',**config)
 image = nc.images.find(name = "Ubuntu Server 14.04 LTS (Trusty Tahr)")
 flavor = nc.flavors.find(name = "m1.medium")
 keypair = nc.keypairs.find(name = "sarokey_very_secure")
-network = nc.networks.find(label = "ACC-Course-net")
+
 
 
 server = nc.servers.create(name = "SaroMasterAssignment3",
                            image = image.id,
                            flavor = flavor.id,
-                           network = network.id,
                            key_name = keypair.name,
-                           userdata = open('/home/sam/Desktop/Assignment 2/user_data_file.sh'))
+                           userdata = open('user_data_file.sh'))
 
 time.sleep(4)
 #nc.floating_ip_pools.list()

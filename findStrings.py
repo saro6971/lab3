@@ -1,9 +1,9 @@
-import sys
+
 import json
-from driver import app
+from driver import celery
 from celery import Celery
 
-@app.task
+@celery.task
 def pronounCount(tweetfile):
     triggerWords = {"han" : 0, "hon" : 0, "den" : 0,
                     "denna" : 0, "denne" : 0, "hen" : 0}

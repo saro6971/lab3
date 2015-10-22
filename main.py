@@ -1,24 +1,27 @@
 import time
-from flask import Flask
 from findStrings import pronounCount
 from celery import group, subtask
+from flask import jsonify
+from collections import Counter
 from driver import app
 
-app = Flask(__name__)
+@app.route('/', methods=['GET'])
+def tweetCountAll():
 
-@app.route("/")
-def allTheTweets():
-    #for x in range(0,20):
-    
-    s = subtask("findStrings.pronounCount","tweets_19.txt")    
+    queue = [pronounCount.s('tweets_{}.txt'.format(x)) for x in xrange(0,20)]
+    g = group(queue)
 
-    grouped = group(s)
-    result = grouped()
-    while(result.ready() == False):
-        time.sleep(2)
-    print result
+    res = g()
 
-    
-#if __name__ == "__main__":
-#    app.run()
-    
+    while (res.ready() == False):
+        time.sleep(3)
+
+    dicts = res.get()
+    counter = Counter()
+    for dic in dicts:
+        counter.update(dic)
+
+    return jsonify(dict(counter)), 200
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', debug=True)

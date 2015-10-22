@@ -17,11 +17,11 @@ def tweetCountAll():
         time.sleep(3)
 
     dicts = res.get()
-    counter = Counter()
-    for dic in dicts:
-        counter.update(dic)
+    #counter = Counter()
+    #for dic in dicts:
+      #  counter.update(dic)
 
-    return jsonify(dict(counter)), 200
+    return dicts
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)

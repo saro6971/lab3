@@ -9,13 +9,16 @@ from driver import app
 def tweetCountAll():
     for x in range(0,20):
         tasks = pronounCount.delay("tweets_"+ str(x) + ".txt")
-    
+    #tasks = pronounCount.delay("/home/sam/Desktop/tweets_19.txt.part")
+    print "ja"
+
     while(tasks.ready() == False):
         time.sleep(4)
 
     res = tasks.get()
-    return res
-    
+    #print res
+    return jsonify(dict(res)), 200
+
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run()

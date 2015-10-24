@@ -17,8 +17,12 @@ def tweetCountAll():
 
     res = tasks.get()
     #print res
-    return jsonify(dict(res)), 200
+    counter = Counter()
+    for dic in res:
+        counter.update(dic)
+
+    return jsonify(dict(counter)), 200
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', debug = True)

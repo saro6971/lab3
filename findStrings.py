@@ -3,7 +3,7 @@ import json
 from driver import celery
 from celery import Celery
 
-@celery.task
+@celery.task()
 def pronounCount(tweetfile):
     triggerWords = {"han" : 0, "hon" : 0, "den" : 0
                    , "hen" : 0 ,"denna" : 0, "denne" : 0}
@@ -18,6 +18,6 @@ def pronounCount(tweetfile):
                 for words in text:                                #
                     if words.lower() in key:                      #for every word which corresponds to a key
                         triggerWords[words.lower()] += 1          # add 1 to that value
- #   print triggerWords                    
+    #print type(triggerWords)                    
     return triggerWords
 #pronounCount("/home/sam/Desktop/tweets_19.txt.part");

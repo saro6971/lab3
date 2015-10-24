@@ -1,9 +1,13 @@
 
 import json
-from driver import celery
+#from driver import celery
 from celery import Celery
 
-@celery.task()
+app = Celery('findStrings', broker = "amqp://", backend = "amqp")
+
+
+#@celery.task()
+@app.task
 def pronounCount(tweetfile):
     triggerWords = {"han" : 0, "hon" : 0, "den" : 0
                    , "hen" : 0 ,"denna" : 0, "denne" : 0}

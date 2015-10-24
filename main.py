@@ -9,7 +9,7 @@ from flask import jsonify
 #@app.task()
 @app.route('/', methods=['GET'])
 def tweetCountAll():
-    for x in range(0,20):
+    for x in xrange(0,20):
         tasks = pronounCount.delay("tweets_"+ str(x) + ".txt")
     #tasks = pronounCount.delay("/home/sam/Desktop/tweets_19.txt.part")
     #print "ja"

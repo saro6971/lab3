@@ -1,9 +1,9 @@
 import time
-from findStrings import pronounCount,app
-#from celery import group, subtask
+from findStrings import pronounCount
+from celery import group, subtask
 from flask import jsonify
-#from collections import Counter
-
+from collections import Counter
+from driver import app
 
 
 #@app.task()

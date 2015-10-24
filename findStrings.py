@@ -14,7 +14,7 @@ def pronounCount(tweetfile):
     key = triggerWords.keys()
     
     with open(tweetfile,"r") as f:                     #read the file// make this generic for all files
-        jsonDataLines = f.readlines()                             #read all the lines in file f
+        jsonDataLines = f.readlines()                             #reaad all the lines in file f
         for data in jsonDataLines:                                #for every line in all the lines
             if data != '\n' and "retweeted_status" not in data:                                      #disregard empty lines and retweets
                 json_data = json.loads(data)                      #load data as json

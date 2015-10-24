@@ -18,6 +18,7 @@ def tweetCountAll():
         time.sleep(4)
 
     res = tasks.get()
+    print res
     #print res
     #counter = Counter()
     #for dic in res:

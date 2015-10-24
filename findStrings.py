@@ -12,7 +12,6 @@ app.config["CELERY_RESULT_BACKEND"] = "amqp"
 celery = Celery('findStrings',  broker=app.config["CELERY_BROKER_URL"], backend=app.config["CELERY_RESULT_BACKEND"])
 
 @celery.task()
-#@app.task
 def pronounCount(tweetfile):
     triggerWords = {"han" : 0, "hon" : 0, "den" : 0
                    , "hen" : 0 ,"denna" : 0, "denne" : 0}

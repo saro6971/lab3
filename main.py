@@ -20,10 +20,11 @@ def tweetCountAll():
     res = tasks.get()
     #print res
     countAll = Counter()
-    for dic in res:
-        countAll.update(dic)
+    for dictionary in result:
+        for word in dictionary:
+            countAll.update(dic)
 
-    return jsonify(dict(countAll))
+    return jsonify(dict(countAll)) ,200
 
 
 if __name__ == '__main__':

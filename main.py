@@ -19,15 +19,21 @@ def tweetCountAll():
 
     result = tasks.get()
     print result
-    #triggerWordsTot = {"han" : 0, "hon" : 0, "den" : 0
-    #               , "hen" : 0 ,"denna" : 0, "denne" : 0}
-    
+    triggerWordsTot = {"han" : 0, "hon" : 0, "den" : 0
+                   , "hen" : 0 ,"denna" : 0, "denne" : 0}
+    triggerWordsTot["han"] += result["han"]
+    triggerWordsTot["hon"] += result["hon"]
+    triggerWordsTot["den"] += result["den"]
+    triggerWordsTot["det"] += result["det"]
+    triggerWordsTot["hen"] += result["hen"]
+    triggerWordsTot["denna"] += result["denna"]
+    triggerWordsTot["denne"] += result["denne"]
     #for dictionary in result:
     #    for key in dictionary:
     #        triggerWordsTot[key] += dictionary[key]
-
+    print triggerWordsTot
    # print triggerWordsTot
-    return jsonify(dict(triggerWordsTot))
+    return jsonify(triggerWordsTot)
 
 
 if __name__ == '__main__':

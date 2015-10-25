@@ -22,8 +22,7 @@ keypair = nc.keypairs.find(name = "sarokey_very_secure")
 server = nc.servers.create(name = "SaroMasterAssignment3",
                            image = image.id,
                            flavor = flavor.id,
-                           key_name = keypair.name,
-                           userdata = open('userdata.sh'))
+                           key_name = keypair.name,)
 
 time.sleep(4)
 #nc.floating_ip_pools.list()
@@ -31,4 +30,4 @@ time.sleep(4)
 
 #server.addresses
 #server.add_floating_ip(floating_ip)
-#server.add_floating_ip("130.238.29.31")
+server.add_floating_ip("130.238.29.98")

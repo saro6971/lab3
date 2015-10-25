@@ -9,22 +9,21 @@ from driver import app
 #@app.task()
 @app.route('/', methods=['GET'])
 def tweetCountAll():
-    for x in xrange(0,20):
+    for x in xrange(0,3):
         tasks = pronounCount.delay("tweets_"+ str(x) + ".txt")
     #tasks = pronounCount.delay("/home/sam/Desktop/tweets_19.txt.part")
     #print "ja"
 
     while(tasks.ready() == False):
-        time.sleep(4)
+        time.sleep(2)
 
     res = tasks.get()
-    print res
     #print res
-    #counter = Counter()
-    #for dic in res:
-    #    counter.update(dic)
+    countAll = Counter()
+    for dic in res:
+        countAll.update(dic)
 
-    return jsonify(res)
+    return jsonify(dict(countAll))
 
 
 if __name__ == '__main__':

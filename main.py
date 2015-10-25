@@ -17,7 +17,7 @@ def tweetCountAll():
     while(tasks.ready() == False):
         time.sleep(2)
 
-    res = tasks.get()
+    result = tasks.get()
     #print res
     countAll = Counter()
     for dictionary in result:

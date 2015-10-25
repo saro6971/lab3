@@ -21,13 +21,13 @@ def tweetCountAll():
     #print res
     triggerWordsTot = {"han" : 0, "hon" : 0, "den" : 0
                    , "hen" : 0 ,"denna" : 0, "denne" : 0}
-    countAll = Counter()
+    
     for dictionary in result:
         for word in dictionary:
             triggerWordsTot[word] += dictionary[word]
 
-    print countAll
-    return jsonify(dict(countAll))
+    print triggerWordsTot
+    return jsonify(dict(triggerWordsTot))
 
 
 if __name__ == '__main__':

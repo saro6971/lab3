@@ -7,7 +7,7 @@ from flask import Flask
 
 @celery.task()
 def pronounCount(tweetfile):
-    triggerWords = {"han" : 0, "hon" : 0, "den" : 0
+    triggerWords = {"han" : 0, "hon" : 0, "den" : 0, "det" : 0
                    , "hen" : 0 ,"denna" : 0, "denne" : 0}
     key = triggerWords.keys()
     

@@ -23,8 +23,8 @@ def tweetCountAll():
                    , "hen" : 0 ,"denna" : 0, "denne" : 0}
     
     for dictionary in result:
-        for word in dictionary:
-            triggerWordsTot[word] += dictionary[word]
+        for key in dictionary.iter_keys():
+            triggerWordsTot[key] += dictionary[key]
 
     print triggerWordsTot
     return jsonify(dict(triggerWordsTot))

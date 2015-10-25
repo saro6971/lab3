@@ -1,4 +1,5 @@
 import time
+import json
 from findStrings import pronounCount
 from celery import group, subtask
 from flask import jsonify
@@ -11,10 +12,11 @@ from driver import app
 @app.route('/', methods=['GET'])
 def tweetCountAll():
     triggerWordsTot = {"han" : 0, "hon" : 0, "den" : 0, "det" : 0, "hen" : 0 ,"denna" : 0, "denne" : 0}
-    for x in xrange(0,20):
+    for x in xrange(0,4):
         tasks = pronounCount.delay("tweets_"+ str(x) + ".txt")
+        print "hejehjehjehej" + str(x)
         while(tasks.ready() == False):
-            time.sleep(1)
+            time.sleep(2)
         result = tasks.get()
         triggerWordsTot["han"] += result["han"]
         triggerWordsTot["hon"] += result["hon"]
@@ -28,7 +30,7 @@ def tweetCountAll():
     #        triggerWordsTot[key] += dictionary[key]
     print triggerWordsTot
    # print triggerWordsTot
-    return jsonify(triggerWordsTot)
+    return json.dumps(triggerWordsTot)
 
 
 if __name__ == '__main__':

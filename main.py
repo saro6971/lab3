@@ -11,7 +11,7 @@ from driver import app
 @app.route('/', methods=['GET'])
 def tweetCountAll():
     triggerWordsTot = {"han" : 0, "hon" : 0, "den" : 0, "det" : 0, "hen" : 0 ,"denna" : 0, "denne" : 0}
-    for x in xrange(0,3):
+    for x in xrange(0,20):
         tasks = pronounCount.delay("tweets_"+ str(x) + ".txt")
         while(tasks.ready() == False):
             time.sleep(1)

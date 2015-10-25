@@ -22,8 +22,9 @@ def tweetCountAll():
     countAll = Counter()
     for dictionary in result:
         for word in dictionary:
-            countAll.update(dic)
+            countAll.update(dictionary)
 
+    print countAll
     return jsonify(dict(countAll)) ,200
 
 
